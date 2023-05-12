@@ -3,13 +3,13 @@
 // adding, changing or removing any of them.
 // Execute `rustlings hint move_semantics5` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
+
 
 fn main() {
-    let mut x = 100;
-    let y = &mut x;
-    let z = &mut x;
-    *y += 100;
+    let mut x = 100; // x is i32
+    let y = &mut x; // y is &mut i32
+    *y += 100; // we dereference y and add 100 to the value it points to
+    let z = &mut x; 
     *z += 1000;
     assert_eq!(x, 1200);
 }

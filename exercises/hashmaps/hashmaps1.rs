@@ -10,21 +10,33 @@
 //
 // Execute `rustlings hint hashmaps1` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
+
 
 use std::collections::HashMap;
 
 fn fruit_basket() -> HashMap<String, u32> {
-    let mut basket = // TODO: declare your hash map here.
+    let mut basket = HashMap::new();
 
     // Two bananas are already given for you :)
-    basket.insert(String::from("banana"), 2);
-
-    // TODO: Put more fruits in your basket here.
-
+    shove_into(&mut basket,"banana",2);
+    shove_into(&mut basket,"mango",6);
+    shove_into(&mut basket,"apple",4);
+    shove_into(&mut basket,"pear",2);
+    shove_into(&mut basket,"rhubarb",1);
     basket
 }
 
+fn shove_into (basket: &mut HashMap<String, u32>, fruit: &str, amount: u32) {
+    basket.insert(String::from(fruit), amount);
+}
+
+fn main () {
+    let basket = fruit_basket();
+    for (fruit, amount) in &basket {
+        println!("{}: {}", fruit, amount);
+    }
+}
+ 
 #[cfg(test)]
 mod tests {
     use super::*;

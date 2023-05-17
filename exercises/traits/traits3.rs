@@ -7,10 +7,13 @@
 // Consider what you can add to the Licensed trait.
 // Execute `rustlings hint traits3` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
+
 
 pub trait Licensed {
-    fn licensing_info(&self) -> String;
+    fn licensing_info(&self) -> String {
+        //String::from(self.version_number) // impossible without editing the 2 impls below
+        String::from("Some information") // lmao this exercise is kinda weird
+    }
 }
 
 struct SomeSoftware {
@@ -20,6 +23,21 @@ struct SomeSoftware {
 struct OtherSoftware {
     version_number: String,
 }
+
+// tried, but it still requires licensing_info for SomeSoftware and OtherSoftware:
+// enum AnySoftware {
+//     OneSoft(SomeSoftware),
+//     SecondSoft(OtherSoftware)
+// }
+
+// impl Licensed for AnySoftware {
+//     fn licensing_info(&self) -> String {
+//         match self {
+//             AnySoftware::OneSoft(one_software) => one_software.licensing_info(),
+//             AnySoftware::SecondSoft(another_software) => another_software.licensing_info()
+//         }
+//     }
+// }
 
 impl Licensed for SomeSoftware {} // Don't edit this line
 impl Licensed for OtherSoftware {} // Don't edit this line
